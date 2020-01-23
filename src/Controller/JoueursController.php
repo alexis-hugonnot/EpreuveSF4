@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/joueurs")
+ * @Route("/")
  */
 class JoueursController extends AbstractController
 {
@@ -21,7 +21,7 @@ class JoueursController extends AbstractController
     public function index(JoueursRepository $joueursRepository): Response
     {
         return $this->render('joueurs/index.html.twig', [
-            'joueurs' => $joueursRepository->findAll(),
+            'joueurs' => $joueursRepository->findby(array(), array('score'=>'DESC')),
         ]);
     }
 
